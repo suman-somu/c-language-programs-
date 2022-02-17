@@ -9,9 +9,9 @@ int main(){
     int x;
     printf("enter");
     scanf("%d",&x);
-    int a= answer(x,1);
+    double a= answer(x,0);
 
-    printf("%d",a);
+    printf("%lf",a);
     return 0;
 }
 
@@ -27,16 +27,17 @@ int factorial(int n){
     return r;
 }
 
-int answer(int x,int n){
+double answer(int x,int n){
 
-    int f= factorial(n);
+    int f= factorial(2*n+1);
     int p= pow(x,2*n+1);
 
-    if(p/f < 0.00001){
-        return 0;
+    double r=(double) p/f;
+    if(r < 0.00001){
+        return 0.0;
     }
     else {
-        return ((p/f) + answer(x,n+1));
+        return (r + answer(x,n+1));
     }
     
 }
